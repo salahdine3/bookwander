@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bookwander</title>
+  <link rel="icon" href="icone].jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+  <style>
+    /* CSS styles here */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #ffffff;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      max-width: 140px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color:red;
+      font-weight:700;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .menu-button {
+      display: none;
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: red;
+      margin-bottom: 4px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-button.active span:nth-child(1) {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-button.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.active span:nth-child(3) {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+
+    .menu {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .menu ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .menu ul li {
+      margin-left: 15px;
+    }
+
+    .menu ul li a {
+      text-decoration: none;
+      color: red;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .text-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .large-text {
+      font-size: 66px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .small-text {
+      font-size: 18px;
+      margin-bottom: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: #666;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      width: 210px;
+      padding: 10px;
+      border: 1px solid #c2c1c1;
+      font-size: 16px;
+      font-family: "Arial", sans-serif;
+    }
+
+    .search-button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: red;
+      color: #ffffff;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: "Arial", sans-serif;
+    }
+
+    .image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image {
+      max-width:100%;
+      height: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      .logo {
+        justify-content: flex-start;
+        margin-left: 20px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: -23px;
+        width: 100%;
+        padding: 10px;
+        background-color: #333;
+        animation: slideDown 0.3s ease-in-out;
+      }
+
+      .menu.active ul {
+        margin-top: 10px;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+
+    
+
+
+
+
+    .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.text-container {
+  text-align: center;
+  margin-right: 40px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.image {
+  max-width: 70%;
+  height: auto;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 767px) {
+  .image {
+    display: none;
+  }
+}
+
+
+
+.line {
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.books-container {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.book {
+  display: inline-block;
+  width: 150px;
+  height: 200px;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
+
+
+.book img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+/* Existing CSS styles */
+
+/* Add this CSS for book flip animation */
+.book {
+  position: relative;
+  perspective: 800px;
+}
+
+.book .flip-container {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.book:hover .flip-container {
+  transform: rotateX(180deg);
+}
+
+.book .flip-container .flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.book .flip-container .front,
+.book .flip-container .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.book .flip-container .front {
+  z-index: 2;
+}
+
+.book .flip-container .back {
+  transform: rotateX(180deg);
+}
+
+/* Additional styles for book-info on the back side */
+.book .flip-container .back .book-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background-color: #e9e9e9;
+}
+
+.book .flip-container .back .book-info h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.book .flip-container .back .book-info p {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.book .flip-container .back .book-info .read-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #eb0505;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Adjustments for better appearance */
+.books-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 20px;
+}
+
+.book {
+  margin-right: 20px;
+}
+
+
+
+/* Existing CSS styles */
+
+/* Add this CSS for centering the content on phone devices */
+@media screen and (max-width: 767px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-container {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .image-container {
+    margin-left: 0;
+  }
+}
+
+
+
+  /* CSS styles here */
+
+    /* Media query for phones */
+    @media screen and (max-width: 767px) {
+      .large-text {
+        font-size: 28px;
+        margin-bottom: 15px;
+      }
+    }
+
+
+    .image {
+  max-width: 70%;
+  height: auto;
+  width: 100%;
+}
+.section-title{
+
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #666;
+  margin-left: 7px;
+  transition: 0.4s;
+}
+.section-title:hover{
+  color: #eb0505;
+}
+
+
+
+.line2{
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
+}
+
+
+/*--------------------------------------*/
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+ 
+  }
+
+  .rectangle-container {
+    display: flex;
+    overflow-x: auto;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .rectangle {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid rgb(197, 196, 196);
+    background-color: rgb(238, 238, 238);
+    width: 330px;
+    height: 100px;
+    margin-right: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+    transition: 0.4s;
+    scroll-snap-type:none ;
+  }
+
+  .rectangle:hover {
+    background-color: #c7c7c7;
+  }
+
+  .rectangle img {
+    width: 80px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .text-container {
+    text-align: left;
+  }
+
+  .text-container h3 {
+    font-size: 18px;
+    margin-top:60px;
+  }
+
+  .text-container p {
+    font-size: 13px;
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: 768px) {
+    .container-wrapper {
+      justify-content: flex-start;
+    }
+
+  }
+
+
+
+
+
+  .see-more-button {
+  display: none; /* Initially hide the button */
+  position: fixed;
+  bottom: 20px;
+  right: -100px;
+  transition: right 0.3s ease;
+  /* Rest of the button styles */
+}
+
+@media (max-width: 768px) { /* Adjust the breakpoint as per your needs */
+  .see-more-button {
+    display: block; /* Show the button on mobile devices */
+  }
+  .text-container h3{
+
+    margin-top:100px;
+
+  }
+  .text-container p {
+    margin-bottom:70px ;
+    font-size: 13px;
+  }
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="output-onlinepngtools.png" alt="Logo">
+    </div>
+    <nav>
+      <div class="menu-button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="#">Educational</a></li>
+          <li><a href="#">Historical</a></li>
+          <li><a href="#">Literary</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="content">
+    <div class="text-container">
+      <h1 class="large-text">WELCOME TO YOUR OWN WORLD</h1>
+      <div class="line"></div>
+      <p class="small-text">Dive into a captivating world of books at <span style="color: red;">wonder book </span>. Discover, connect, and explore with our vibrant literary community.</p>
+      <div class="input-container">
+        <input type="text" class="search-input" placeholder="Search">
+        <button class="search-button">Search</button>
+      </div>
+    </div>
+    <div class="image-container">
+      <img class="image" src="Library-amico (1).png" alt="Image">
+    </div>
+  </div>
+  
+  <div class="line"></div>
+  <h2 class="section-title">Famous Books</h2>
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.aSh05hPjWlzD-f6fgSxvYQHaKg?w=190&h=270&c=7&r=0&o=5&pid=1.7" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>الاب الغني و الاب الفقير</h3>
+              <a href="books\الأب الغني والأب الفقير_34240_Foulabook.com_.pdf" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://foulabook.com/storage/photo/60846.2019-02-02.1549115094.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3> أرض زيكولا </h3>
+              <a href="books\أرض زيكولا_23757_Foulabook.com_.pdf" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="31576.2018-03-03.1520077338.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>أنت لي</h3>
+               <a href="books\11825.Foulabook.com.2018-03-03.1520077338.pdf" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="4xr82k1s.png" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>الوعظ القصصي</h3>
+              <a href="#" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.haq4hrCXfNAX7qb3ETgz-gHaKv?w=189&h=275&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>انتخرستس</h3>
+              <p>تحميل كتاب <br>أنتيخريستوس pdf الكاتب أحمد خالد<br> مصطفى </p>
+              <a href="https://foulabook.com/book/downloading/518488900" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.YLfGDeJ1R8b2xUBuyzsKUQHaJ4?w=128&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>العادات السبع<br> للناس الأكثر فعالية</h3>
+              <p>تحميل كتاب العادات  <br> لالسبع للناس الأكثر فعالية pdf</p>
+              <a href="https://foulabook.com/book/downloading/977795631" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.yl_Ua3vT_4obt9-6NOqmXAAAAA?w=135&h=191&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>فكر وازدد ثراء</h3>
+              <p>تحميل كتاب<br>فكر وازدد ثراء pdf</p>
+              <a href="https://foulabook.com/book/downloading/541774145" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.zAkaJ12ShYnhsjdrv-kX8wAAAA?w=147&h=212&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>لغة الجسد النفسية</h3>
+              <p>تحميل كتاب لغة <br>الجسد النفسية <br>pdf الكاتب جوزيف ميسينجر</p>
+              <a href="https://foulabook.com/book/downloading/887262666" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.zSsf1r8dLVb8x7KSoXoCbAHaKd?w=189&h=267&c=7&r=0&o=5&pid=1.7" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>48 قانوناً للقــوة</h3>
+              <p>تحميل كتاب 48 قانوناً<br> للقــوة <br>pdf الكاتب روبرت غرين</p>
+              <a href="https://foulabook.com/book/downloading/417985226" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add more book divs with image links -->
+  </div>
+  
+  <div class="line2"></div>
+
+
+  <div class="rectangle-container">
+    <a href="money.html" class="rectangle">
+      <img src="Investment data-amico.png" alt="Image 1">
+      <div class="text-container">
+        <h3>Money</h3>
+        <p> Books in this field cover investment <br> financial management, and achieving  <br>financial independence</p>
+      </div>
+    </a>
+  
+    <a href="Health.html" class="rectangle">
+      <img src="Lymphoma-rafiki.png" alt="Image 2">
+      <div class="text-container">
+        <h3>Health</h3>
+        <p>Books in this field cover general health <br> physical fitness, proper nutrition <br> and mental well-being</p>
+      </div>
+    </a>
+  
+    <a href="Personal.html" class="rectangle">
+      <img src="Personal goals-bro.png" alt="Image 3">
+      <div class="text-container">
+        <h3>Personal development</h3>
+        <p>Books in this field focus on enhancing <br> personal performance leadership skills <br> motivation, and self-growth</p>
+      </div>
+    </a>
+  
+    <a href="Relationships.html" class="rectangle">
+      <img src="Honesty-rafiki.png" alt="Image 4">
+      <div class="text-container">
+        <h3>Relationships</h3>
+        <p>relationships, marriage, understanding <br> communication, improvement.
+        </p>
+      </div>
+    </a>
+  </div>
+
+  
+
+
+
+
+
+
+
+
+
+
+  <div class="line"></div>
+  
+  <button class="bn1" herf="#"><h2 class="section-title">Educational Books ▶</h2></button>
+  
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.BQ6ymaBw7WeX3JP1K90DtAAAAA?w=122&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3> تعلم البايثون للمبتدئين</h3>
+              <p>تحميل كتاب تعلم<br> البايثون للمبتدئين - بالعربي pdf</p>
+              <a href="https://foulabook.com/book/downloading/419377646" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.Am835_nBlcxFPYYz68kFRQAAAA?w=115&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>كتاب قواعد اللغة الالمانية</h3>
+              <p>تحميل كتاب <br> قواعد اللغة الالمانية pdf</p>
+              <a href="https://foulabook.com/book/downloading/206023453" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.p6_hLzo6hNptRreEaPTCCwHaJQ?w=119&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>كتاب مبادئ اصلاح <br>الأعطال في الدوائر<br> الالكترونية والكهربية</h3>
+              <p>تحميل كتاب مبادئ اصلاح<br> الأعطال في الدوائر <br>الالكترونية والكهربية pdf              </p>
+              <a href="https://foulabook.com/book/downloading/822319154" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.FPWzV3HAh1s7AH2p3OBZ6wAAAA?w=189&h=257&c=7&r=0&o=5&pid=1.7">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>قواعد اللغة الإنجليزية</h3>
+              <p>تحميل كتاب قواعد<br> اللغة الإنجليزية <br>بطرق ممتعة وبسيطة pdf              </p>
+              <a href="https://foulabook.com/book/downloading/609452715" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.musd8igurtdQE_K-t1OVdAAAAA?w=189&h=284&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>الكفاءة المهنية</h3>
+              <p>تحميل كتاب الكفاءة المهنية pdf</p>
+              <a href="https://foulabook.com/book/downloading/485901401" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.eGyBrjw1Pe4QVrTn7_U29QHaKn?w=115&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3> المتعلم طريق التعلم</h3>
+              <p>تحميل كتاب تعليم<br> المتعلم طريق التعلم pdf</p>
+              <a href="https://foulabook.com/book/downloading/963252365" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="data:image/jpeg;base64,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" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>مقدمة في نظم الري</h3>
+              <p>تحميل كتاب<br> مقدمة في نظم الري pdf              </p>
+              <a href="https://foulabook.com/book/downloading/760025368" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.8AfQFdI9ScL5OWCav4PadQHaLM?w=115&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>الكفاءة المهنية</h3>
+              <p>تحميل كتاب<br> الكفاءة المهنية pdf              </p>
+              <a href="https://foulabook.com/book/downloading/485901401" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.CDi8iDH3ywqnhOa7OJnZlgHaLe?w=115&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>ويأتي الغد</h3>
+              <p> تحميل كتاب ويأتي الغد pdf
+              </p>
+              <a href="https://foulabook.com/book/downloading/420651582" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-button">Download</button>
+
+    <!-- Add more book divs with image links -->
+  </div>
+  
+
+
+
+  
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://ketabpedia.com/wp-content/uploads/2020/07/bnr30359.png" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>كورس الليث في الفيزياء</h3>
+              <p>
+                تحميل كتاب كورس الليث في الفيزياء pdf                 </p>
+              <a href="https://foulabook.com/book/downloading/208254916" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.ZfAEiYuo5xDctwe_Dfw_DQHaKN?w=189&h=261&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>نظري الفستقة</h3>
+              <p>تحميل كتاب نظرية الفستق pdf <br>الكاتب فهد عامر الأحمدي
+              </p>
+              <a href="https://foulabook.com/book/downloading/655939713" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.DYPOFsFoK2Bi_pma0YTHowAAAA?w=115&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>لمرجع الأكيد <br>في لغة الجسد</h3>
+              <p>تحميل كتاب المرجع <br>الأكيد في لغة الجسد pdf              </p>
+              <a href="https://foulabook.com/book/downloading/222748229" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.l3AykRKKaILIDohdvAfdPwHaLG?w=115&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3> لماذا يكذب <br>الرجل وتبكي المرأة</h3>
+              <p>تحميل كتاب لماذا<br> يكذب الرجل <br> وتبكي المرأة pdf              </p>
+              <a href="https://foulabook.com/book/downloading/302745022" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.-XOhbv2w3RwAD2Y0PbWLcQHaIy?w=150&h=180&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>ما تشعر به يمكنك علاجه</h3>
+              <p>تحميل كتاب <br>ما تشعر به يمكنك علاجه pdf              </p>
+              <a href="https://foulabook.com/book/downloading/986831553" class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src ="https://th.bing.com/th/id/OIP._Hfr7h6lNq0UfXLx62ADDAAAAA?w=130&h=183&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>كتاب العادات السبع للناس الأكثر فعالية</h3>
+              <p>تحميل كتاب العادات السبع للناس الأكثر فعالية pdf</p>
+              <a href="https://foulabook.com/book/downloading/977795631"
+               class="read-button">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.v9Drsr7sC42IaVsDLOIf3AHaJl?w=121&h=170&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Book 2</h3>
+              <p>Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit <br> Aenean cursus nisl at <br> vestibulum commodo.</p>
+              <a href="#" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.v9Drsr7sC42IaVsDLOIf3AHaJl?w=121&h=170&c=7&r=0&o=5&pid=1.7" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Book 2</h3>
+              <p>Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit <br> Aenean cursus nisl at <br> vestibulum commodo.</p>
+              <a href="#" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://th.bing.com/th/id/OIP.v9Drsr7sC42IaVsDLOIf3AHaJl?w=121&h=170&c=7&r=0&o=5&pid=1.7" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Book 3</h3>
+              <p>Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit <br> Aenean cursus nisl at <br> vestibulum commodo.</p>
+              <a href="#" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-button">See More</button>
+
+    <!-- Add more book divs with image links -->
+  </div>
+  
+
+
+
+
+
+
+
+
+  
+  <div class="line"></div>
+  
+  <button class="bn1" onclick="location.href='literary.html'"><h2 class="section-title">Literary Books ▶</h2></button>
+  
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/19721/pg19721.cover.medium.jpg" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info"><br>
+              <h3>The Literary World <br> Seventh Reader</h3>
+              <p>	Readers </p>
+              <a href="https://www.gutenberg.org/ebooks/19721.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/10471/pg10471.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The World's <br> Greatest Books</h3>
+              <p>Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/10471.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/19264/pg19264.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 16px;" >	Japanese  Literature</h3>
+              <p>	Japan -- Literary  <br>collections</p>
+              <a href="https://www.gutenberg.org/ebooks/19264.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/38208/pg38208.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 16px;">The Animal Story Book
+              </h3>
+              <p>	Animals -- <br> Literary collections</p>
+              <a href="https://www.gutenberg.org/ebooks/38208.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/3251/pg3251.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 12px;">The Man That <br> Corrupted Hadleyburg</h3>
+              <p>	Humorous stories <br> American</p>
+              <a href="https://www.gutenberg.org/ebooks/3251.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/35993/pg35993.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 14px;">The History of Don <br> Quixote de la Mancha
+              </h3>
+              <p>	Picaresque literature</p>
+              <a href="https://www.gutenberg.org/ebooks/35993.html.images" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/69620/pg69620.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 14px;">	Library of the best <br> American literature</h3>
+              <p>American literature</p>
+              <a href="https://www.gutenberg.org/ebooks/69620.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src=" https://www.gutenberg.org/cache/epub/52930/pg52930.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3> A Book for <br> the Curious</h3>
+              <p>Names</p>
+              <a href="https://www.gutenberg.org/ebooks/52930.html.images" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/12059/pg12059.cover.medium.jpg" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 12px;">The World's Greatest <br> Books — Volume 09</h3>
+              <p> Biography</p>
+              <a href="https://www.gutenberg.org/ebooks/12059.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-button">See More</button>
+
+    <!-- Add more book divs with image links -->
+  </div>
+  
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/39957/pg39957.cover.medium.jpg" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Prairie Gold</h3>
+              <p>	Iowa -- Literary collections</p>
+              <a href="https://www.gutenberg.org/ebooks/39957.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/67240/pg67240.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>	Sämtliche <br> Werke 12</h3>
+              <p>	Dostoyevsky, Fyodor, 1821-1881</p>
+              <a href="https://www.gutenberg.org/ebooks/67240.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/64385/pg64385.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>	Authorship</h3>
+              <p>Why Authors Go Wrong<br> and Other Explanations</p>
+              <a href="https://www.gutenberg.org/ebooks/64385.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/41474/pg41474.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>	The Dixie <br> Book of Days</h3>
+              <p>Literary calendars</p>
+              <a href="https://www.gutenberg.org/ebooks/41474.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/66205/pg66205.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 14px;">	Literary Pilgrimages <br> of a Naturalist</h3>
+              <p>Natural history - <br> - Outdoor books</p>
+              <a href="https://www.gutenberg.org/ebooks/66205.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/57852/pg57852.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 10px;">Ideals in Art: Papers <br> Theoretical, Practical, Critical
+              </h3>
+              <p>	Text..</p>
+              <a href="https://www.gutenberg.org/ebooks/57852.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src=" https://www.gutenberg.org/cache/epub/53378/pg53378.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font: size 14px;">	A Mother's <br> Year Book</h3>
+              <p>Motherhood - <br> - Literary collections</p>
+              <a href="https://www.gutenberg.org/ebooks/53378.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/60834/pg60834.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 14px;">The Yale Literary <br> Magazine</h3>
+              <p>Yale University - <br> - Periodicals </p>
+              <a href="https://www.gutenberg.org/ebooks/60834.html.images" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/55942/pg55942.cover.medium.jpg" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Iris</h3>
+              <p> Indians of North America - <br> - Literary collections</p>
+              <a href="https://www.gutenberg.org/ebooks/55942.html.images" class="read-button">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-button">See More</button>
+
+    <!-- Add more book divs with image links -->
+  </div>
+  
+
+
+
+
+
+
+  
+  <div class="line"></div>
+  
+  <button class="bn1" herf="#"><h2 class="section-title">Historical Books ▶</h2></button>
+  
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/174/pg174.cover.medium.jpg" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Picture of <br> Dorian Gray</h3>
+              <p>Wilde, Oscar, 1854-1900</p>
+              <a href="https://www.gutenberg.org/ebooks/174.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/2600/pg2600.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Tolstoy, Leo, graf <br> 1828-1910</h3>
+              <p>	Napoleonic Wars <br> 1800-1815  Campaigns <br> Russia -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/2600.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/1184/pg1184.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 16px;">The Count of Monte<br>Cristo Illustrated</h3>
+              <p>	Revenge -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/1184.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/120/pg120.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>	Treasure Island</h3>
+              <p>	Treasure Island <br>(Imaginary place) -- Fiction</p>
+              <a href="#" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/236/pg236.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Jungle Book</h3>
+              <p>	India -- History -- 19th <br> century -- Fiction </p>
+              <a href="https://www.gutenberg.org/ebooks/236.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/2610/pg2610.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 12px;">Notre-Dame de Paris</h3>
+              <p> Paris (France) -- History - <br> - To 1515 -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/2610.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/73/pg73.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 12px;">The Red Badge of Courage<br> An Episode of the <br> American Civil War
+              </h3>
+              <p>Virginia -- History -- Civil War <br>, 1861-1865 -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/73.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/26/pg26.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Paradise Lost</h3>
+              <p>	Eve (Biblical figure) <br> -- Poetry</p>
+              <a href="https://www.gutenberg.org/ebooks/26.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/135/pg135.cover.medium.jpg" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>	Les Misérables</h3>
+              <p>Paris (France) -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/135.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-button">See More</button>
+
+    <!-- Add more book divs with image links -->
+  </div>
+  
+  
+  <div class="books-container">
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/60/pg60.cover.medium.jpg" alt="Book 1">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 14px;">The Scarlet Pimpernel</h3>
+              <p>	British -- France -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/60.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/82/pg82.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Ivanhoe: A Romance</h3>
+              <p>Knights and knighthood <br> Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/82.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/23700/pg23700.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3 style="font-size: 14px;">The Decameron of <br> Giovanni Boccaccio
+              </h3>
+              <p> Plague -- Europe - <br> - History -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/23700.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/2638/pg2638.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Idiot</h3>
+              <p>Russia -- Social conditions - <br> - 1801-1917 -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/2638.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/37499/pg37499.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Book 2</h3>
+              <p>Napoleon's Letters to <br> Josephine, 1796-1812</p>
+              <a href="https://www.gutenberg.org/ebooks/37499.html.images" class="read-button">Read </a>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/540/pg540.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Red Fairy Book</h3>
+              <p>	Fairy tales</p>
+              <a href="https://www.gutenberg.org/ebooks/540.html.images" class="read-button">Read  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src=" https://www.gutenberg.org/cache/epub/30107/pg30107.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>Principles of  <br>Political Economy</h3>
+              <p>Economics</p>
+              <a href="https://www.gutenberg.org/ebooks/30107.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/33/pg33.cover.medium.jpg" alt="Book 2">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Scarlet Letter</h3>
+              <p>	Women immigrants -- Fiction</p>
+              <a href="https://www.gutenberg.org/ebooks/33.html.images" class="read-button">Read </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="book">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <img src="https://www.gutenberg.org/cache/epub/42884/pg42884.cover.medium.jpg" alt="Book 3">
+          </div>
+          <div class="back">
+            <div class="book-info">
+              <h3>The Philippine Islands</h3>
+              <p>	Philippines -- Discovery <br> and exploration</p>
+              <a href="https://www.gutenberg.org/ebooks/42884.html.images" class="read-button">Read</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="see-more-button">See More</button>
+
+    <!-- Add more book divs with image links -->
+  </div>
+  
+
+
+
+
+  <script>
+    // JavaScript code here
+    const menuButton = document.querySelector('.menu-button');
+    const menu = document.querySelector('.menu');
+
+    menuButton.addEventListener('click', () => {
+      menuButton.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+
+
+
+
+    window.addEventListener('scroll', function() {
+  var seeMoreButton = document.getElementById('seeMoreButton');
+  var scrollPosition = window.scrollX || window.pageXOffset;
+
+  if (window.innerWidth <= 768 && scrollPosition > 0) { // Adjust the breakpoint as per your needs
+    seeMoreButton.style.right = -scrollPosition + 'px';
+  } else {
+    seeMoreButton.style.right = '-100px';
+  }
+});
+
+
+  </script>
+
+<div class="line"></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="logo">
+        <img src="logo-removebg-preview (1).png" alt="Logo">
+      </div>
+      <div class="social-media">
+        <a href="https://www.facebook.com/profile.php?id=100093375052851&mibextid=ZbWKwL" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/bookwander.web?igshid=NGExMmI2YTkyZg==" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Books</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="copy-info">
+      &copy; 2023 bookwander. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+
+   
+
+<style>
+
+
+
+.site-footer {
+  background-color: #ff0000;
+  padding: 20px;
+  color: #ff0000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 24px;
+  color: #fffefe;
+  transition: transform 0.3s ease;
+}
+
+.social-media a:hover {
+  transform: rotate(360deg);
+}
+
+.footer-links a {
+  margin-right: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #333;
+}
+
+.copy-info {
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+
+
+
+.bn1{
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+</style>
+
+
+</body>
+</html>
+
+
+
+
+
